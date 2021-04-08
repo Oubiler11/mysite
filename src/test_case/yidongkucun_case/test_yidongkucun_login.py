@@ -28,53 +28,38 @@ class TestLong(unittest.TestCase):
         self.driver = driver.get_driver()
 
 
+
     def test_case_1(self):
         #引入页面元素
         self.login = yidongkucun_login.Login_page(self.driver)
-        self.search = yidongkucun_search.search_page(self.driver)
 
-        #------------------------从搜狗首页进入库存首页-------------------------
-        #搜狗首页-点击网址栏
-        self.login.click_sougou_website_button()
-        #网址页点击网址栏
-        self.login.click_sougou_website_column()
-        #网址栏输入网址
-        self.login.send_sougou_website_column()
-        #点击前往
-        self.login.click_sougou_website_qianwang()
-        #判断：如果在用户登陆页，那么就输入账号密码进行登陆，如果已经是库存首页，输出进入首页成功
-        try:
-            #点击和输入用户名
-            self.login.click_land_username()
-            self.login.send_land_username()
+        #------------------------直接启动云苍穹个人首页，进入应用页-------------------------
+        #从云苍穹个人首页进入应用首页
+        self.login.click_login_yingyong()
+        self.assertEqual(self.login.dy_login_yingyong, 1, '断言失败，从云苍穹个人首页进入应用首页失败')
 
-            #点击和输入密码
-            self.login.click_land_password()
-            self.login.send_land_password()
+        #从应用首页进入库存查询页
+        self.login.click_login_yingyong_kccx()
+        self.assertEqual(self.login.dy_login_yingyong_kccx, 1, '断言失败，从云苍穹个人首页进入应用首页失败')
 
-            #点击登陆
-            self.login.click_land_denglu()
+
+        #---------判断是否登陆成功
+        #查找右上角的方案按钮
+        self.login.noclick_login_kccx_fangan()
+        #如果查找成功，判断为成功
+        if self.login.dy_no_login_kccx_fangan == 1:
             print("登陆成功")
-        except:
-            print("库存首页登陆成功")
+        #如果查询不成功，判断为失败
+        else:
+            self.assertEqual(self.login.dy_no_login_kccx_fangan, 1, '断言失败，从云苍穹个人首页进入应用首页失败，test_case_1执行失败！')
 
-            self.login.test_land_denglu()
-
-        try:
-            self.login.click_land_username()
-            i = 1
-            print("首页方案按钮获取成功")
-        except:
-            i = 2
-            print("首页方案按钮获取失败")
-
-
-        self.assertEqual(i,1,'断言失败，未成功登陆首页，test_case_1执行异常')
 
 
 
     def tearDown(self):
         self.driver.quit()
+
+
 
 
 if __name__ == '__main__':

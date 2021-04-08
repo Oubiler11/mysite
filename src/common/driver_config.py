@@ -12,8 +12,8 @@ class Driver_Config():
                 'platformVersion': '6',  # 平台版本
                 'deviceName': '127.0.0.1:7555',  # （模拟器设备名称，通过adb来链接模拟器，adb connect 127.0.0.1:7555）
                 # 应用参数
-                'appPackage': 'sogou.mobile.explorer',  # 包名（用的是mumu模拟器的自带浏览器）
-                'appActivity': 'sogou.mobile.explorer.BrowserActivity',  # APP打开的界面
+                'appPackage': 'com.kdweibo.client',  # 包名（用的是云之家）
+                'appActivity': 'com.kdweibo.android.ui.fragment.HomeMainFragmentActivity',  # APP打开的界面
                 'noReset': True,  # 是否重置
                 'newCommandTimeout': 6000,
                 'unicodeKeyboard': True,  # 解决输入中文问题

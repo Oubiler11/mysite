@@ -27,7 +27,7 @@ class TestLong(unittest.TestCase):
         self.driver = driver.get_driver()
 
 
-    def test_case_3(self):
+    def test_case_4(self):
         #引入页面元素
         self.login = yidongkucun_login.Login_page(self.driver)
         self.fangan = yidongkucun_fangan.search_page(self.driver)
@@ -39,39 +39,34 @@ class TestLong(unittest.TestCase):
         # 从应用首页进入库存查询页
         self.login.click_login_yingyong_kccx()
 
-        # ------------------------进入方案新增和切换页-------------------------
+        # ------------------------方案新增和切换-------------------------
         self.login.click_login_kccx_fangan()
 
-        # ------------------------循环新增两个方案-------------------------
-        self.fangan.click_fangan_kccx_xinzengan()
-        self.fangan.click_fangan_kccx_fanganminceng()
-        self.fangan.send_fangan_kccx_fanganminceng()
-        self.fangan.click_fangan_kccx_baocunan()
-        time.sleep(5)
-
-        #-----------------如果有test01这个固定的方案，就执行，没有的话，就随意切换方案--------
         try:
-            #进入方案页
-            self.login.click_login_kccx_fangan()
-            self.fangan.click_fangan_kccx_qiehuanfangangd()
-            try:
-                self.fangan.noclick_fangan_kccx_meiyoukucun()
-                ifangan = 1
-                print ("固定方案切换成功，没有数据")
-            except:
-                ifangan = 2
-                print("随机方案切换成功，包含数据")
-            self.assertEqual(ifangan, 1, '断言失败，未成功登陆库存首页，test_case_1执行异常')
+            self.fangan.click_fangan_kccx_xinzengan()
+            self.fangan.click_fangan_kccx_fanganminceng()
+            self.fangan.send_fangan_kccx_fanganminceng()
+            self.fangan.click_fangan_kccx_baocunan()
+            print("新增方案成功")
         except:
+            self.fangan.click_fangan_kccx_fanganminceng()
+            self.fangan.send_fangan_kccx_fanganmincenggd()
+            self.fangan.click_fangan_kccx_jinrucangku()
+            self.fangan.click_fangan_kccx_xuanzecangku()
+            self.fangan.click_fangan_kccx_baocuncangku()
+            self.fangan.click_fangan_kccx_baocunan()
+            print("第一次新增方案成功")
+
+
+        try:
             self.login.click_login_kccx_fangan()
-            self.fangan.click_fangan_kccx_qiehuanfangansj()
-            i = 2
-            print("库存首页搜索框获取失败")
-            self.driver.get_screenshot_as_file("C:\\Users\\Administrator\\PycharmProjects\\pythonProject\\cqydtest\\src\\image\\test_case1_image.png")
-
-
-
-
+            i=1
+            print("断言，新增方案成功")
+        except:
+            i=2
+            print("断言，新增方案失败")
+            self.driver.get_screenshot_as_file("C:\\Users\\Administrator\\PycharmProjects\\pythonProject\\cqydtest\\src\\image\\test_case2_image.png")
+        self.assertEqual(i, 1, '断言失败，方案新增失败，test_case_2执行异常')
 
 
 
