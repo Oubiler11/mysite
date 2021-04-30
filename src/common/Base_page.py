@@ -14,7 +14,7 @@ class Base_page():
     def find_element(self, *loc):
         '''重写find_element方法，显式等待'''
         try:
-            WebDriverWait(self.driver,30).until(EC.visibility_of_element_located(loc))
+            WebDriverWait(self.driver,20).until(EC.visibility_of_element_located(loc))
             return self.driver.find_element(*loc)
         except Exception as e:
             raise e

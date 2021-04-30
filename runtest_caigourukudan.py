@@ -1,9 +1,9 @@
 import HTMLTestRunner
 import unittest
 
-from config.globalparameter import report_name, test_case_path,yidongxiaoshou_path
+from config.globalparameter import report_name, test_case_path_caigourukudan,yidongxiaoshou_path
 
-suite = unittest.defaultTestLoader.discover(start_dir=test_case_path,pattern='test*.py')
+suite = unittest.defaultTestLoader.discover(start_dir=test_case_path_caigourukudan,pattern='test*.py')
 
 # 执行测试
 if __name__=="__main__":
