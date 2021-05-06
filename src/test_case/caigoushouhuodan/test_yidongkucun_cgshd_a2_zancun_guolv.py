@@ -9,14 +9,14 @@ import unittest#引用自动化测试框架
 from appium.webdriver.webdriver import WebDriver
 
 
-class TestLong1(unittest.TestCase):
+class TestLong2(unittest.TestCase):
     def setUp(self):
         driver = driver_config.Driver_Config()
         self.driver = driver.get_driver()
 
 
 
-    def test_case_1(self):
+    def test_case_2(self):
         #引入页面元素
         self.login = yidongkucun_cgshd_a1_login.Login_page(self.driver)
 

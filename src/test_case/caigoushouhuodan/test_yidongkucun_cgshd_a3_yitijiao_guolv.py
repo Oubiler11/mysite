@@ -9,14 +9,14 @@ import unittest#引用自动化测试框架
 from appium.webdriver.webdriver import WebDriver
 
 
-class TestLong1(unittest.TestCase):
+class TestLong3(unittest.TestCase):
     def setUp(self):
         driver = driver_config.Driver_Config()
         self.driver = driver.get_driver()
 
 
 
-    def test_case_1(self):
+    def test_case_3(self):
         #引入页面元素
         self.login = yidongkucun_cgshd_a1_login.Login_page(self.driver)
 
@@ -41,13 +41,6 @@ class TestLong1(unittest.TestCase):
         self.guolv.click_cgshd_yitijiao_guolv()
         self.assertEqual(self.guolv.dy_cgshd_yitijiao_guolv, 1, '断言失败，下拉菜单-已提交，点击失败')
 
-        #点击下拉列表的暂存
-        self.guolv.click_cgshd_zancun_guolv()
-        self.assertEqual(self.guolv.dy_cgshd_zancun_guolv, 1, '断言失败，下拉菜单-暂存，点击失败')
-
-        #点击下拉列表的已提交
-        self.guolv.click_cgshd_yitijiao_xialaliebiao()
-        self.assertEqual(self.guolv.dy_cgshd_yitijiao_xialaliebiao, 1, '断言失败，下拉列表-已提交，点击失败')
 
         #点击确认按钮进行过滤
         self.guolv.click_cgshd_queding_xialaliebiao()

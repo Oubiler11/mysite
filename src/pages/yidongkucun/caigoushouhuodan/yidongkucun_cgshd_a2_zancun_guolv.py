@@ -107,9 +107,9 @@ class guolv (Base_page.Base_page,unittest.TestCase):
         try:
             self.find_element(*self.cgshd_buxian_xialaliebiao_sj).click()
             self.dy_cgshd_buxian_xialaliebiao_sj = 1
-            print("下拉菜单-本周按钮，点击成功")
+            print("下拉菜单-不限按钮，点击成功")
         #如果不能进行点击操作，赋值2，同时输出点击不成功的提示，并且输出当前页的截图
         except:
             self.dy_cgshd_buxian_xialaliebiao_sj = 2
-            print("下拉菜单-本周按钮，点击失败，输出当前截图")
+            print("下拉菜单-不限按钮，点击失败，输出当前截图")
             self.driver.get_screenshot_as_file("C:\\Users\\Administrator\\PycharmProjects\\pythonProject\\cqydtest\\src\\image\\click_cgshd_buxian_xialaliebiao_sj.png")
